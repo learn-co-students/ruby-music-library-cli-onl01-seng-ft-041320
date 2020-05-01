@@ -25,7 +25,7 @@ def artist=(artist)
     @artist = artist
     artist.add_song(self) 
   end
-  
+
   def save
     @@all << self
   end 
@@ -73,5 +73,4 @@ end
 def self.create_from_filename(filename)
   new_from_filename(filename).tap{|file| file.save }
 end
-
 end

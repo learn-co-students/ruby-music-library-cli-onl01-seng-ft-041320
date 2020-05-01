@@ -1,6 +1,6 @@
 class MusicLibraryController
 
-#initialize the 'path' defaults to './db/mp3s'
+    #initialize the 'path' defaults to './db/mp3s'
 #creates a new MusicImporter object, 
 #passing the 'path' value
 #invokes the #import method from MusicImporter
@@ -22,7 +22,6 @@ def call
       puts "To quit, type 'exit'."
       puts "What would you like to do?"
       input = gets.chomp
-
       case input
       when 'list songs'
         self.list_songs
@@ -75,7 +74,6 @@ def call
     def list_songs_by_artist
     puts "Please enter the name of an artist:"
     input = gets.strip
-
     if artist = Artist.find_by_name(input)
        artist.songs.sort { |a,b| a.name <=> b.name }.each.with_index(1) do |song, i|
         puts "#{i}. #{song.name} - #{song.genre.name}"
@@ -95,7 +93,7 @@ def call
           end
         end
       end
-    
+      
 #input = '5', play song 4. "Playing Larry Csonka by Action Bronson"
 #strip remove white spaces
 #chomp remove the newline character at the end of strings
@@ -103,7 +101,6 @@ def call
 def play_song
     puts "Which song number would you like to play?"
     input = gets.chomp.to_i - 1
-
     if input >= 1..Song.all.length 
     song = Song.all.sort { |a,b| a.name <=> b.name }[input]
         if song != nil
@@ -111,5 +108,4 @@ def play_song
         end
     end
 end
-
 end

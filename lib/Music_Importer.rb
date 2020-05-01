@@ -1,4 +1,5 @@
 class MusicImporter
+
     attr_reader :path
 
 #initialize accepts a file path
@@ -6,7 +7,7 @@ class MusicImporter
   def initialize(path)
       @path = path
   end
-  
+
 #files loads all the MP3 files in the path directory
 #just the MP3 filename with no path
 #"Action Bronson - Larry Csonka - indie.mp3"

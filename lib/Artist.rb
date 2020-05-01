@@ -3,13 +3,12 @@ class Artist
     extend Concerns::Findable
     attr_accessor :name
     attr_reader :songs
- 
+
     @@all = []
 
     def initialize(name)
         @name = name
         @songs = []
-
     end
 
     def self.all
@@ -17,9 +16,9 @@ class Artist
     end
 
     def self.destroy_all
-        @@all.clear
+        @@all.clea
+        r
     end
-
     def save
         @@all << self
     end
