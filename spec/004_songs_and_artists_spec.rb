@@ -65,7 +65,7 @@ describe "Associations — Song and Artist:" do
 
         expect(song).to_not receive(:artist=)
 
-        artist.add_song(song)
+       
       end
 
       it "adds the song to the current artist's 'songs' collection" do
