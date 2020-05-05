@@ -9,7 +9,7 @@ class Song
         @name = name
         self.artist= artist if artist #the if argument makes this call optional because if artist isn't there code isn't run.
         self.genre= genre if genre #the if argurment makes this call optional based on if an artist is passed in
-        binding.pry
+        # binding.pry
     end
 
     def self.all

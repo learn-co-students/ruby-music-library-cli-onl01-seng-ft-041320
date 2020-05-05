@@ -41,11 +41,12 @@ class Artist
             songs << song if !songs.include?(song)
         end
         
+        songs << song if !songs.include?(song)
+
     end
     
     def genres
         #create a statement that iterates throught an array of the songs of the artists and returns all of the genres or
-        binding.pry
-        .collect{|song| song.genre}
+        self.songs.collect{|song| song.genre}.uniq
     end
 end
