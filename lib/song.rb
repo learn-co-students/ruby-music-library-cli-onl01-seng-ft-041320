@@ -32,12 +32,40 @@ class Song
 
     def artist=(artist)
         @artist = artist
-        artist.add_song(self)
+        self.artist.add_song(self)
     end
     
     def genre=(genre)
         @genre = genre
         genre.songs << self if !genre.songs.include?(self)
     end  
+
+    def self.find_by_name(name)
+        Song.all.find{|song| song if song.name == name}
+    end
     
+    def self.find_or_create_by_name(name)
+        if self.find_by_name(name)
+            self.find_by_name(name)
+        else
+            Song.create(name)
+        end
+    end
+
+    def self.new_from_filename(file)
+        #take file name and split it at " - "
+        #files are split in db\mp3 folder by:  artist - song - genre.mp3
+        song_name = file.split(" - ")[1]
+        artist_name = file.split(" - ")[0]
+        genre_name = file.split(" - ")[2].split(".mp3")[0]
+        
+
+        song = self.find_or_create_by_name(song_name)
+        
+        song.artist(self.find_or_create_by_name(artist_name))
+        song.genre(self.find_or_create_by_name(genre_name))
+        
+        # binding.pry
+    end
+
 end

@@ -4,7 +4,9 @@ class Artist
     attr_accessor :name, :songs
 
     @@all = []
-
+    
+    extend Concerns::Findable
+    
     def initialize(name)
         @name = name
         @songs = [] #an artist has many songs!
@@ -27,22 +29,18 @@ class Artist
         create_artist.save
         create_artist
     end
-    
-    #-----------------------------------------------------------------------------
-
-    # def songs
-    #     # Song.all.select{|song| song.artist == self}
-        
-    # end
 
     def add_song(song)
-        if  song.artist == nil #checks if an artist was input when Song class was instantiated.
-            song.artist= self #assigns current artist to the artists property 
+        #checks if an artist was input when Song class was instantiated.
+        if  song.artist == nil 
+            #assigns current artist to the artists property 
+            song.artist= self 
             songs << song if !songs.include?(song)
+            
         end
         
         songs << song if !songs.include?(song)
-
+       
     end
     
     def genres
